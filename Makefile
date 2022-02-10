@@ -6,7 +6,7 @@
 #    By: adbaich <adbaich@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/09 23:32:55 by adbaich           #+#    #+#              #
-#    Updated: 2022/02/09 23:43:46 by adbaich          ###   ########.fr        #
+#    Updated: 2022/02/09 23:46:56 by adbaich          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,3 +33,10 @@ ${NAME}:
 
 ${NAMEC}:
 	${CC} ${CFLAGS} ${SRCC} -o ${NAMEC}
+
+clean:
+	${RM} ${NAME} ${NAMEC}
+
+fclean: clean
+
+re: fclean all
