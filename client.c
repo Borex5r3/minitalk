@@ -6,7 +6,7 @@
 /*   By: adbaich <adbaich@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 15:31:36 by adbaich           #+#    #+#             */
-/*   Updated: 2022/02/10 01:44:55 by adbaich          ###   ########.fr       */
+/*   Updated: 2022/02/11 22:01:05 by adbaich          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ int	main(int ac, char **av)
 	if (ac == 3)
 	{
 		pid = ft_atoi(av[1]);
+		if (pid <= 0)
+			return (0);
 		while (av[2][j])
 		{
 			ascii = av[2][j];

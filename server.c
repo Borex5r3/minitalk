@@ -6,7 +6,7 @@
 /*   By: adbaich <adbaich@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 15:31:17 by adbaich           #+#    #+#             */
-/*   Updated: 2022/02/10 01:41:56 by adbaich          ###   ########.fr       */
+/*   Updated: 2022/02/11 22:17:58 by adbaich          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,8 @@ void	hander(int num)
 
 int	main(void)
 {
-	printf("That's Process ID ==> %d\n", getpid());
+	ft_putnbr_fd(getpid());
+	ft_putstr_fd(" <== That's Process ID\n");
 	signal(SIGUSR1, hander);
 	signal(SIGUSR2, hander);
 	while (1)

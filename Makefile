@@ -6,12 +6,14 @@
 #    By: adbaich <adbaich@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/09 23:32:55 by adbaich           #+#    #+#              #
-#    Updated: 2022/02/09 23:46:56 by adbaich          ###   ########.fr        #
+#    Updated: 2022/02/11 22:12:19 by adbaich          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS = server.c \
 	ft_bzero.c \
+	ft_putnbr_fd.c \
+	ft_putstr_fd.c \
 
 SRCC = client.c \
 	ft_atoi.c \

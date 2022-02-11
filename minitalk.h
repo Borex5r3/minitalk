@@ -6,7 +6,7 @@
 /*   By: adbaich <adbaich@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 15:41:47 by adbaich           #+#    #+#             */
-/*   Updated: 2022/02/10 01:29:38 by adbaich          ###   ########.fr       */
+/*   Updated: 2022/02/11 22:13:34 by adbaich          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdio.h>
 # include <stdio.h>
 # include <stdlib.h>
+# include <unistd.h>
 
 typedef struct s_vars
 {
@@ -31,5 +32,7 @@ typedef struct s_vars
 
 int		ft_atoi(const char *str);
 void	ft_bzero(void *s, size_t n);
+int		ft_putstr_fd(char *p);
+int		ft_putnbr_fd(int n);
 
 #endif
