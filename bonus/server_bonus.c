@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   server_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adbaich <adbaich@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/07 15:31:17 by adbaich           #+#    #+#             */
-/*   Updated: 2022/08/02 12:51:28 by adbaich          ###   ########.fr       */
+/*   Created: 2022/08/02 12:20:52 by adbaich           #+#    #+#             */
+/*   Updated: 2022/08/04 12:49:42 by adbaich          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "minitalk_bonus.h"
 
 t_vars	g_word;
 
@@ -34,10 +34,18 @@ void	fill_bits(int *i, int n)
 		g_word.bit8 = n;
 }
 
-void	hander(int num)
+void	handler(int num, siginfo_t *info, void *context)
 {
 	static int	i;
+	static int	pid;
+	static int	lock;
 
+	context = NULL;
+	if (!lock)
+	{
+		pid = info->si_pid;
+		lock = 1;
+	}
 	if (num == SIGUSR1)
 		fill_bits(&i, 0);
 	else if (num == SIGUSR2)
@@ -48,14 +56,20 @@ void	hander(int num)
 		i = 0;
 		write(1, &g_word, 1);
 	}
+	kill(pid, SIGUSR1);
+	usleep(100);
 }
 
 int	main(void)
 {
+	struct sigaction	act;
+
+	act.__sigaction_u.__sa_sigaction = handler;
+	act.sa_flags = SA_SIGINFO;
 	ft_putnbr_fd(getpid());
 	ft_putstr_fd(" <== That's Process ID\n");
-	signal(SIGUSR1, hander);
-	signal(SIGUSR2, hander);
+	sigaction(SIGUSR1, &act, NULL);
+	sigaction(SIGUSR2, &act, NULL);
 	while (1)
 		pause();
 	return (0);

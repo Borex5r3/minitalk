@@ -5,18 +5,20 @@
 #                                                     +:+ +:+         +:+      #
 #    By: adbaich <adbaich@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/02/09 23:32:55 by adbaich           #+#    #+#              #
-#    Updated: 2022/08/02 12:44:15 by adbaich          ###   ########.fr        #
+#    Created: 2022/08/03 12:28:41 by adbaich           #+#    #+#              #
+#    Updated: 2022/08/04 12:06:46 by adbaich          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = server.c \
+SRCS = server_bonus.c \
 	ft_bzero.c \
 	ft_putnbr_fd.c \
 	ft_putstr_fd.c \
 
-SRCC = client.c \
+SRCC = client_bonus.c \
 	ft_atoi.c \
+	ft_putnbr_fd.c \
+	ft_putstr_fd.c \
 
 OBJS := $(patsubst %.c,%.o, ${SRCS})
 NAME = server
@@ -29,7 +31,7 @@ RM = rm -f
 
 CFLAGS = -Wall -Wextra -Werror
 
-all : ${NAME} ${NAMEC}
+bonus : ${NAME} ${NAMEC}
 
 %.o:%.c
 	${CC} ${CFLAGS} -c $< -o $@
@@ -46,4 +48,4 @@ clean:
 fclean: clean
 	${RM} ${NAME} ${NAMEC}
 
-re: fclean all
+re: fclean bonus

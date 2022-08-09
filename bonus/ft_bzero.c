@@ -1,37 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adbaich <adbaich@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/07 15:41:47 by adbaich           #+#    #+#             */
-/*   Updated: 2022/08/02 12:19:22 by adbaich          ###   ########.fr       */
+/*   Created: 2021/11/02 19:32:17 by adbaich           #+#    #+#             */
+/*   Updated: 2022/08/03 12:53:44 by adbaich          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
-# include <signal.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
+#include "minitalk_bonus.h"
 
-typedef struct s_vars
+void	ft_bzero(void *s, size_t n)
 {
-	int	bit1: 1;
-	int	bit2: 1;
-	int	bit3: 1;
-	int	bit4: 1;
-	int	bit5: 1;
-	int	bit6: 1;
-	int	bit7: 1;
-	int	bit8: 1;
-}	t_vars;
+	char		*p;
+	size_t		i;
 
-int		ft_atoi(const char *str);
-void	ft_bzero(void *s, size_t n);
-int		ft_putstr_fd(char *p);
-int		ft_putnbr_fd(int n);
-
-#endif
+	i = 0;
+	p = (char *) s;
+	if (n == 0)
+		return ;
+	while (i < n)
+	{
+		p[i] = '\0';
+		i++;
+	}
+}
